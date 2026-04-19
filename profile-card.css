@@ -1,0 +1,350 @@
+/* ── Reset & base ───────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink:        #1a1612;
+  --ink-mid:    #4a4540;
+  --ink-soft:   #7a736b;
+  --ink-ghost:  #b0a89e;
+  --paper:      #faf8f4;
+  --paper-warm: #f2ede4;
+  --paper-card: #ffffff;
+  --accent:     #c84b2f;
+  --accent-dim: #e8d5cf;
+  --hobbies-bg: #eaf3ec;
+  --hobbies-fg: #1e5c2a;
+  --dislikes-bg:#fdecea;
+  --dislikes-fg:#922B21;
+  --border:     rgba(26,22,18,0.10);
+  --shadow-sm:  0 2px 8px rgba(26,22,18,0.07);
+  --shadow-md:  0 8px 32px rgba(26,22,18,0.10), 0 2px 8px rgba(26,22,18,0.06);
+  --r:          20px;
+}
+
+html { font-size: 16px; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  background: var(--paper-warm);
+  color: var(--ink);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  /* subtle grain texture */
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+/* ── Page wrapper ───────────────────────────────────────────────────── */
+.page-wrap {
+  width: 100%;
+  max-width: 860px;
+}
+
+/* ── Card ───────────────────────────────────────────────────────────── */
+.profile-card {
+  background: var(--paper-card);
+  border-radius: var(--r);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  overflow: hidden;
+  transition: box-shadow 0.3s;
+  position: relative;
+}
+
+.profile-card:hover {
+  box-shadow: 0 16px 48px rgba(26,22,18,0.13), 0 4px 12px rgba(26,22,18,0.08);
+}
+
+/* accent bar top */
+.profile-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent) 0%, #e8834f 100%);
+}
+
+/* ── Aside (avatar + socials) ───────────────────────────────────────── */
+.card-aside {
+  background: var(--paper-warm);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2.5rem 1.5rem 2rem;
+  gap: 1.75rem;
+}
+
+/* ── Avatar ─────────────────────────────────────────────────────────── */
+.avatar-fig {
+  flex-shrink: 0;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--paper-card);
+  box-shadow: 0 0 0 3px var(--accent-dim), var(--shadow-sm);
+  background: var(--paper-warm);
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Social links ───────────────────────────────────────────────────── */
+.social-list {
+  list-style: none;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--ink-mid);
+  text-decoration: none;
+  padding: 7px 12px;
+  border-radius: 9px;
+  border: 1px solid transparent;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  letter-spacing: 0.01em;
+}
+
+.social-link:hover {
+  background: var(--paper-card);
+  color: var(--accent);
+  border-color: var(--border);
+}
+
+.social-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 9px;
+}
+
+.social-link svg {
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+.social-link:hover svg { opacity: 1; }
+
+/* ── Main content area ──────────────────────────────────────────────── */
+.card-main {
+  padding: 2.5rem 2.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ── Header ─────────────────────────────────────────────────────────── */
+.card-eyebrow {
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+
+.card-name {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  color: var(--ink);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+.card-bio {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--ink-mid);
+  max-width: 48ch;
+}
+
+/* ── Epoch time ─────────────────────────────────────────────────────── */
+.time-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--paper-warm);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 8px 14px;
+  align-self: flex-start;
+}
+
+.time-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink-ghost);
+}
+
+time[data-testid="test-user-time"] {
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--ink);
+  letter-spacing: 0.02em;
+}
+
+.time-unit {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-ghost);
+}
+
+/* ── Lists grid ─────────────────────────────────────────────────────── */
+.lists-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.list-heading {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+  letter-spacing: 0.01em;
+}
+
+.tag-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.tag-list li {
+  font-size: 11.5px;
+  font-weight: 500;
+  padding: 3px 11px;
+  border-radius: 999px;
+  letter-spacing: 0.01em;
+}
+
+.tag-list.hobbies li {
+  background: var(--hobbies-bg);
+  color: var(--hobbies-fg);
+}
+
+.tag-list.dislikes li {
+  background: var(--dislikes-bg);
+  color: var(--dislikes-fg);
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────── */
+
+/* Tablet: tighten aside */
+@media (max-width: 720px) {
+  .profile-card {
+    grid-template-columns: 180px 1fr;
+  }
+  .card-aside { padding: 2rem 1.25rem 1.75rem; }
+  .avatar-fig { width: 120px; height: 120px; }
+  .card-main { padding: 2rem 1.5rem 1.75rem; }
+  .lists-grid { grid-template-columns: 1fr; }
+}
+
+/* Mobile: stack vertically */
+@media (max-width: 520px) {
+  .profile-card {
+    grid-template-columns: 1fr;
+  }
+
+  .card-aside {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 1.75rem 1.5rem;
+    gap: 1.25rem;
+    align-items: flex-start;
+  }
+
+  .avatar-fig {
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+  }
+
+  .social-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .social-link {
+    font-size: 11.5px;
+    padding: 5px 10px;
+  }
+
+  .card-main { padding: 1.5rem; gap: 1.25rem; }
+  .card-name { font-size: 1.5rem; }
+  .card-bio { font-size: 13.5px; }
+  .lists-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Dark mode ──────────────────────────────────────────────────────── */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink:        #eae5de;
+    --ink-mid:    #b0a898;
+    --ink-soft:   #7a7268;
+    --ink-ghost:  #554f48;
+    --paper:      #141210;
+    --paper-warm: #1c1916;
+    --paper-card: #201d19;
+    --accent:     #e06040;
+    --accent-dim: #3d2218;
+    --hobbies-bg: #0e2b14;
+    --hobbies-fg: #82e0aa;
+    --dislikes-bg:#3d1a17;
+    --dislikes-fg:#f1948a;
+    --border:     rgba(255,255,255,0.08);
+    --shadow-sm:  0 2px 8px rgba(0,0,0,0.3);
+    --shadow-md:  0 8px 32px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.2);
+  }
+
+  body {
+    background: var(--paper-warm);
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  }
+}
+
+/* ── Focus styles (global) ──────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
