@@ -6,7 +6,7 @@ A self-contained, accessible, responsive Profile Card component built with vanil
 
 ## Live Demo
 
-🔗 [View on Vercel](https://your-project.vercel.app)
+🔗 [View on Vercel](https://build-a-testable-profile-card.vercel.app/)
 
 ---
 
