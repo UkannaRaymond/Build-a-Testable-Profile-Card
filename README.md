@@ -15,7 +15,7 @@ A self-contained, accessible, responsive Profile Card component built with vanil
 ### Option 1 — Clone the repo
 
 ```bash
-git clone https://github.com/UkannaRaymond/Build--Testble-Todo-Item-Card.git
+git clone https://github.com/UkannaRaymond/Build-a-Testable-Profile-Card.git
 cd your-profile-card-repo
 ```
 
