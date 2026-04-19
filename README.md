@@ -15,7 +15,7 @@ A self-contained, accessible, responsive Profile Card component built with vanil
 ### Option 1 — Clone the repo
 
 ```bash
-git clone https://github.com/UkannaRaymond/your-profile-card-repo.git
+git clone https://github.com/UkannaRaymond/Build--Testble-Todo-Item-Card.git
 cd your-profile-card-repo
 ```
 
@@ -57,14 +57,14 @@ README.md           — this file
 
 ## Features
 
-| Feature | Detail |
-|---|---|
-| **Live epoch time** | Displays `Date.now()` in milliseconds, updates every second |
-| **Avatar** | Rendered via `<figure>` + `<img>` with meaningful `alt` text |
-| **Social links** | GitHub, LinkedIn, Twitter — open in new tab with `rel="noopener noreferrer"` |
-| **Hobbies & Dislikes** | Two distinct semantic lists with color-coded pill tags |
-| **Dark mode** | Automatic via `prefers-color-scheme: dark`, no toggle needed |
-| **Responsive layout** | Stacks vertically on mobile, side-by-side on tablet and desktop |
+| Feature                | Detail                                                                       |
+| ---------------------- | ---------------------------------------------------------------------------- |
+| **Live epoch time**    | Displays `Date.now()` in milliseconds, updates every second                  |
+| **Avatar**             | Rendered via `<figure>` + `<img>` with meaningful `alt` text                 |
+| **Social links**       | GitHub, LinkedIn, Twitter — open in new tab with `rel="noopener noreferrer"` |
+| **Hobbies & Dislikes** | Two distinct semantic lists with color-coded pill tags                       |
+| **Dark mode**          | Automatic via `prefers-color-scheme: dark`, no toggle needed                 |
+| **Responsive layout**  | Stacks vertically on mobile, side-by-side on tablet and desktop              |
 
 ---
 
@@ -72,19 +72,19 @@ README.md           — this file
 
 Every visible element carries a `data-testid` attribute for stable automated testing. The full map:
 
-| Element | `data-testid` |
-|---|---|
-| Card root (`<article>`) | `test-profile-card` |
-| Name (`<h2>`) | `test-user-name` |
-| Bio (`<p>`) | `test-user-bio` |
-| Epoch time (`<time>`) | `test-user-time` |
-| Avatar (`<img>`) | `test-user-avatar` |
-| Social links list (`<ul>`) | `test-user-social-links` |
-| Twitter link | `test-user-social-twitter` |
-| GitHub link | `test-user-social-github` |
-| LinkedIn link | `test-user-social-linkedin` |
-| Hobbies list (`<ul>`) | `test-user-hobbies` |
-| Dislikes list (`<ul>`) | `test-user-dislikes` |
+| Element                    | `data-testid`               |
+| -------------------------- | --------------------------- |
+| Card root (`<article>`)    | `test-profile-card`         |
+| Name (`<h2>`)              | `test-user-name`            |
+| Bio (`<p>`)                | `test-user-bio`             |
+| Epoch time (`<time>`)      | `test-user-time`            |
+| Avatar (`<img>`)           | `test-user-avatar`          |
+| Social links list (`<ul>`) | `test-user-social-links`    |
+| Twitter link               | `test-user-social-twitter`  |
+| GitHub link                | `test-user-social-github`   |
+| LinkedIn link              | `test-user-social-linkedin` |
+| Hobbies list (`<ul>`)      | `test-user-hobbies`         |
+| Dislikes list (`<ul>`)     | `test-user-dislikes`        |
 
 ---
 
@@ -136,11 +136,11 @@ Every visible element carries a `data-testid` attribute for stable automated tes
 
 ## Responsiveness
 
-| Breakpoint | Layout |
-|---|---|
-| `> 720px` (desktop) | Two-column: avatar + socials on the left, content on the right |
-| `520px – 720px` (tablet) | Narrower aside column, lists collapse to single column |
-| `< 520px` (mobile) | Fully stacked, aside becomes a horizontal row with compact social links |
+| Breakpoint               | Layout                                                                  |
+| ------------------------ | ----------------------------------------------------------------------- |
+| `> 720px` (desktop)      | Two-column: avatar + socials on the left, content on the right          |
+| `520px – 720px` (tablet) | Narrower aside column, lists collapse to single column                  |
+| `< 520px` (mobile)       | Fully stacked, aside becomes a horizontal row with compact social links |
 
 ---
 
